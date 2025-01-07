@@ -358,10 +358,15 @@ Software Engineering - Product Șutdaun
               Player *-- PlayerUI
       ```
   - C4 Diagrams
-      ![System Context Diagram]()
-      ![Container Diagram]()
-      ![Component Diagram]()
-
+    * System Context <br>
+        <img src="./Diagrams/C4DiagramSystem.png" alt="System Context Diagram" width="500">
+    * Container <br>
+        <img src="./Diagrams/C4DiagramContainer.png" alt="Container Diagram" width="500">
+    * Component <br>
+        <img src="./Diagrams/C4DiagramComponent.png" alt="Component Diagram" width="900">
+    * Overview <br>
+        <img src="./Diagrams/C4Diagram.png" alt="C4 Diagrams Overview" width="900">
++ ### Synthesis
 ## Source Code
 The code for project can be found [here](https://github.com/TaviF24/Game).
 
