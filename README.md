@@ -8,6 +8,9 @@ Software Engineering - Product Șutdaun
 + ### Requirements, User Personas, Features
   These are included in the GDD(Game Design Document) file from the [Documentation](./Documentation) folder.
 
+## Source Code
+The code for project can be found [here](https://github.com/TaviF24/Game).
+
 ## Planning
 + ### Backlog
   For our backlog, we used Github Issues and Jira. To access it on Jira, click [here](https://raducordunianu02.atlassian.net/jira/software/projects/SCRUM/boards/1) and you have to log in and have permission to our project.
@@ -367,8 +370,6 @@ Software Engineering - Product Șutdaun
     * Overview <br>
         <img src="./Diagrams/C4Diagram.png" alt="C4 Diagrams Overview" width="900">
 + ### Synthesis
-## Source Code
-The code for project can be found [here](https://github.com/TaviF24/Game).
 
 ## QA
 ## Security Analysis
