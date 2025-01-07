@@ -10,9 +10,9 @@ Software Engineering - Product Șutdaun
 
 ## Planning
 + ### Backlog
-  For our backlog, we used Jira. To access it, click [here](https://raducordunianu02.atlassian.net/jira/software/projects/SCRUM/boards/1) and you have to log in and have permission to our project.
+  For our backlog, we used Github Issues and Jira. To access it on Jira, click [here](https://raducordunianu02.atlassian.net/jira/software/projects/SCRUM/boards/1) and you have to log in and have permission to our project.
 
-## Design
+## Design | Architectural Description
 + ### Diagrams
   - UML Diagram
       ```mermaid
@@ -357,7 +357,14 @@ Software Engineering - Product Șutdaun
               Player *-- PlayerInteract
               Player *-- PlayerUI
       ```
-
+  - C4 Diagrams
+      ![System Context Diagram]()
+      ![Container Diagram]()
+      ![Component Diagram]()
 
 ## Source Code
 The code for project can be found [here](https://github.com/TaviF24/Game).
+
+## QA
+## Security Analysis
+## CI/CD
