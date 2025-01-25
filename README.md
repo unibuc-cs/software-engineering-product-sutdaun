@@ -373,4 +373,69 @@ The code for project can be found [here](https://github.com/TaviF24/Game).
 
 ## QA
 ## Security Analysis
++ ### Protecting Player Data
+  + **Risk:** Players might modify save files to alter game data, such as health, ammo.
+  + **Solution**
+
+    We want our game save file to be protected against unauthorized access by encrypting it.
+
+    The file is encrypted with an AES 128-bit encryption key and a 16-byte initialization vector *(to ensure the encrypted file content is unique, even if there are no changes)*, which is then encoded into a Base64 string for easy file storage.
+
+    **[Cryptography.cs](https://github.com/TaviF24/Game/blob/6ec60040569b046c3c74f2e6a2de4c4485ea8796/Game/Assets/Scripts/DataPersistence/Cryptography.cs)**
+    ```c#
+    public byte[] Encode(byte[] bytes, byte[] key, byte[] vector)
+    {
+          Aes aes = Aes.Create(); // instance of AES Encryption Object
+          ICryptoTransform encryptor = aes.CreateEncryptor(key, vector); // will perform the encryption using the key and IV
+          MemoryStream memoryStream = new MemoryStream(); // temporary storage for encrypted data
+          CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write); // link memoryStream to encryptor
+          cryptoStream.Write(bytes, 0, bytes.Length); // write data as plaintext, where it then gets encrypted
+          cryptoStream.Close();
+          return memoryStream.ToArray();
+    }
+    ```
+  
+    **[FileDataHandler.cs](https://github.com/TaviF24/Game/blob/6ec60040569b046c3c74f2e6a2de4c4485ea8796/Game/Assets/Scripts/DataPersistence/FileDataHandler.cs)** extends Cryptography
+    ```c#
+    private byte[] key = new byte[16] { x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x };
+    byte[] iv = new byte[16] { y, y, y, y, y, y, y, y, y, y, y, y, y, y, y, y };
+    ```
+  
+    By protecting our **game.data** file, we can prevent players from gaining an unfair advantage since reading/modifying variables is impossible without the key and IV.
+  
+    <br>
+  
+    ***Save file location:***
+    `C:\Users\%USERNAME%\AppData\LocalLow\DefaultCompany\Game\game.data`
+    
+    **game.data** *as a json, before encryption*
+    ```json
+    {
+      "playerPosition": {
+          "x": -19.420000076293947,
+          "y": -0.2408899962902069,
+          "z": 16.200000762939454
+      },
+      "playerHealth": 78.0,
+      "lastScene": "BankFloor1",
+      "detected": true,
+      "anticipation": false,
+      "assault": true,
+      "timeInAnticipation": 30.008705139160158
+    }
+    ```
+  
+    **game.data** *as a Base64 string, after encryption + encoding*
+    ```
+    SaS+knakQ3NejCinK7OrPUFoUGfJr07wEV4ZB6YdUoAf6pVet+rqJZa92QMbDmdKxbHmY4TkwAWalkT4p8p7hduD+LLovrVPwYmW1tvUOIKQsOCQ4cn6h1hdFpD2UFapIBpfYvoe4xwdLRIvSnki+lqtCSHg5hcJRjncdUv+fdwKtcOOAunbf2Gq6HrO5AQ3OflGb1UEaqTNGY/5FlcOTav6gBbs+d7gSrBcZwhI73HUgyP9TEI2QrABfTekactJukmlYQDMcqdsHufNu4ipSV4Fm6VIoudeCBQ0sjYyQSsoMjTR3hJ8hy6cXP9VgZpmlWtTcokhd5ijNNdFRRbgZUHcsnQzY/DUeA6EmmoAcAX0o82DRuT/A0AYM0TD5PBNS0s+Tf2ETZGiadaM7cWDZA==
+    ```
+
++ ## Other possible threats
++ ### Memory Manipulation
+  + **Risk:** Players could use external tools *(Cheat Engine)* to modify the game variables stored in memory (infinite money, health; alter detection status).
+  + **Possible solutions:** Anti-cheat software to detect unauthorized access, memory validation.
+
++ ### AI Exploitation
+  + **Risk:** Players could exploit weaknesses in the bodyguard AI code and game mechanics to bypass detection.
+  + **Possible solutions:** Improving AI logic by adding random patrol paths to make the AI less predictable.
 ## CI/CD
