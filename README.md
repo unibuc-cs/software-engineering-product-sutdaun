@@ -372,6 +372,33 @@ The code for project can be found [here](https://github.com/TaviF24/Game).
 + ### Synthesis
 
 ## QA
+
+During the development process, our team dedicated significant attention to the QA stages, using various types of testing. Since it was a game project, the testing was exclusively manual but conducted with a high degree of rigor.
+
+---
+
++ ### Functional Testing
+Throughout the development of the game’s functionalities, the entire team was involved in the testing process. Once a developer finished implementing a specific functionality, they tested it individually. When confident that their code was fully functional, the rest of the team began testing the functionality to ensure a high standard of quality.  
+Additionally, after implementing any new functionality, we conducted **Regression Testing** to ensure that adding new features did not affect existing components or compromise the project's integrity.
+
+---
+
++ ### User Testing
+During development, we collaborated with other teams to test our products. In nearly every sprint, we exchanged intermediate products with other teams to test each other’s functionalities.  
+The primary goal of this was to identify weaknesses in the user interface (UI) and game experience from the perspective of a first-time player and to receive objective and "merciless" feedback. Over the course of 7 sprints, we received **4 reviews** of the game.<br>
+
++ Example of review <br>
+    <img src="./Diagrams/ExRecenzie.png" alt="Example of review" width="900">
+---
+
++ ### Performance Testing
+From a performance standpoint, we took all necessary implementation measures early on to avoid overloading the user’s device. However, to ensure this at all times, we tested the product on multiple devices with varying specifications. This helped us ensure that the client’s device performance would not negatively impact their experience with our product.
+
+---
+
++ ### Security Testing
+Security was one of our top priorities, as we aimed to provide users with a highly reliable product. The measures we implemented adhered to the highest standards in the field and are detailed in a dedicated section of the documentation.
+
 ## Security Analysis
 + ### Protecting Player Data
   + **Risk:** Players might modify save files to alter game data, such as health, ammo.
