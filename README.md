@@ -505,9 +505,12 @@ Security was one of our top priorities, as we aimed to provide users with a high
 
 - #### Unit tests:
     - Automated tests were run every time new code was pushed to the development branch.
+    
     <img src="/Diagrams/TestStackTrace.png">
+    
     - Unity's Test Framework (or another testing tool) was used to ensure individual parts of the game code were functioning correctly.
-    <img src="/Diagrams/CameraDetectionTest.png">
+   
+     <img src="/Diagrams/CameraDetectionTest.png">
 
 - #### Build tests:
     - On every commit, the project was built to ensure that no changes had broken the build.
@@ -517,7 +520,10 @@ Security was one of our top priorities, as we aimed to provide users with a high
     - These tests focused on the **user experience**, ensuring the game was engaging, bug-free, and enjoyable for players.
 - #### CI/CD configuration:
     - The pipeline was configured using **GitHub Actions**, with separate workflows defined for different stages such as testing and building.
+    
     <img src="/Diagrams/CompletedTest.png">
+    
     - **Caching** was used to speed up builds and tests by reusing previously built assets and dependencies (using `actions/cache`).
     - The pipeline environment was set up with necessary **secrets** and **variables** (Unity license, credentials), ensuring a secure and automated process.
+    
     <img src="/Diagrams/Secrets.png">
