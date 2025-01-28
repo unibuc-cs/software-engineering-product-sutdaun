@@ -11,6 +11,8 @@ Software Engineering - Product Șutdaun
 ## Source Code
 The code for project can be found [here](https://github.com/TaviF24/Game).
 
+## [Demo video](https://www.youtube.com/watch?v=eAG_1nOb3Es)
+
 ## Planning
 + ### Backlog
   For our backlog, we used Github Issues and Jira. To access it on Jira, click [here](https://raducordunianu02.atlassian.net/jira/software/projects/SCRUM/boards/1) and you have to log in and have permission to our project.
