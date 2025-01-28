@@ -468,3 +468,56 @@ Security was one of our top priorities, as we aimed to provide users with a high
   + **Risk:** Players could exploit weaknesses in the bodyguard AI code and game mechanics to bypass detection.
   + **Possible solutions:** Improving AI logic by adding random patrol paths to make the AI less predictable.
 ## CI/CD
+---
++ ## Describing the Used Environments
+    ### The project benefited of three CI/CD pipelines:
+- #### Developer Environment (Dev):
+    - This is where the team actively worked on and tested new features.
+    - In CI/CD, this environment was primarily used for running **unit tests** and **build tests**, ensuring that code changes were correct and that no issues were introduced (e.g., resolving bugs that a colleague had worked on).
+    - Frequent deployments happened here to ensure continuous testing of the latest code changes.
+- #### Staging Environment:
+    - A staging environment closely mirrors the production environment and is used for final testing before public release.
+    - It was configured to be as close to production as possible, and **User Acceptance Testing (UAT)** was performed here to validate the game’s readiness for release.
+    - This environment served as the stage where users often flagged bugs or performance issues, providing valuable feedback for final improvements.
+- #### Production Environment (Prod):
+ - The production environment is where the end-users interacted with the game.
+    - CI/CD ensured that only thoroughly tested and stable versions of the project made it to production, reducing the risk of deploying broken or incomplete features.
+    - Critical updates or bug fixes were the only changes pushed to this environment to ensure the game remained stable for users.
+
++ ## Differences Between Environments (Dev, Staging, Prod)
+    ### Each environment has unique characteristics, depending on its role in the development and deployment pipeline:
+
+- #### Development:
+    - The development environment was frequently updated with every new commit.
+    - It was primarily used to test new features, fixes, and improvements.
+    - This environment was often unstable due to the constant flow of changes, but it allowed for real-time debugging and collaboration among team members.
+- #### Staging:
+    - The staging environment mirrored the production environment as closely as possible.
+    - It served as the final step before deploying to production, used for bug fixes, and **User Acceptance Testing (UAT)**.
+    - While generally more stable than development, it could still have bugs due to the introduction of new features or unfinished work.
+- #### Production:
+    - The production environment represented the final, stable version of the game that users experienced.
+    - No new features or changes were deployed unless they were bug fixes or critical improvements that were overlooked in development or staging.
+    - CI/CD ensured that the deployment to production was smooth, and that the latest release was free of bugs.
+    
++ ## Specific Configuration in CI/CD Pipeline
+    ### The CI/CD pipeline was configured to automate various stages of testing and deployment:
+
+- #### Unit tests:
+    - Automated tests were run every time new code was pushed to the development branch.
+    <img src="/Diagrams/TestStackTrace.png">
+    - Unity's Test Framework (or another testing tool) was used to ensure individual parts of the game code were functioning correctly.
+    <img src="/Diagrams/CameraDetectionTest.png">
+
+- #### Build tests:
+    - On every commit, the project was built to ensure that no changes had broken the build.
+    - Tools like `game-ci/unity-builder` were used to automate the build process within the CI pipeline, ensuring continuous integration and reducing manual intervention.
+- #### User Tests:
+    - Every two weeks, a group of students manually tested the game, providing feedback on bugs, gameplay issues, and feature suggestions.
+    - These tests focused on the **user experience**, ensuring the game was engaging, bug-free, and enjoyable for players.
+- #### CI/CD configuration:
+    - The pipeline was configured using **GitHub Actions**, with separate workflows defined for different stages such as testing and building.
+    <img src="/Diagrams/CompletedTest.png">
+    - **Caching** was used to speed up builds and tests by reusing previously built assets and dependencies (using `actions/cache`).
+    - The pipeline environment was set up with necessary **secrets** and **variables** (Unity license, credentials), ensuring a secure and automated process.
+    <img src="/Diagrams/Secrets.png">
