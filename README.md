@@ -18,6 +18,12 @@ The code for project can be found [here](https://github.com/TaviF24/Game).
   For our backlog, we used Github Issues and Jira. To access it on Jira, click [here](https://raducordunianu02.atlassian.net/jira/software/projects/SCRUM/boards/1) and you have to log in and have permission to our project.
 
 ## Design | Architectural Description
+
++ ### Synthesis
+
+Heist Master is a single-player, first-person shooter where the player takes up the role of a thief participating in a robbery. The game requires a combination of stealth, strategy, and fighting techniques to evade the guards and steal the money. The player can choose to either shoot the guards or silently stab them if they remain unnoticed, all while looting the money hidden along the way. The game ends with the discovery of the secret safe and the successful escape back to the vehicle.
+
+
 + ### Diagrams
   - UML Diagram
       ```mermaid
@@ -371,11 +377,75 @@ The code for project can be found [here](https://github.com/TaviF24/Game).
         <img src="./Diagrams/C4DiagramComponent.png" alt="Component Diagram" width="900">
     * Overview <br>
         <img src="./Diagrams/C4Diagram.png" alt="C4 Diagrams Overview" width="900">
-+ ### Synthesis
+
++ ### Non-Functional Requirements
+  
++ #### Responsiveness
+The game runs with at least 30FPS and approximately 100FPS on various PCs ensuring a reasonable response time.
+
++ #### Reliability
+
+The game was tested during development by both developers, users and automated tests to ensure it’s reliability and multiple issues were fixed. It runs smoothly without any significant glitches or crashes. 
+
++ #### Availability
+  
+The game was thoroughly tested across multiple devices to test its performance and availability and runs seamlessly on different devices. 
+
++ #### Security
+
+The system has it’s save files encrypted with an AES 128-bit encryption key and a 16-byte initialization vector which is then encoded into a Base64 string for easy file storage ensuring that they can’t be tampered with by users for gaining an unfair advantage.
+
++ #### Usability
+
+To ensure usability we have implemented a tutorial with instructions about controls and game mechanics that allows players to understand how the game works. The tutorial also explains NPC behavior, the presence of cameras, and the various ways in which you can eliminate a guard and win the game.
+
++ #### Maintainability
+
+To ensure maintainability we used prefabs for commonly used elements and we followed object oriented programming principles for writing the scripts. We also used Github features such as branches and tests so we can manage updates more easily.
+
++ #### Resilience
+
+The system’s save data files are stored and encrypted in the event of a partial failure or external attack and can be accessed once the error is solved.
+
++ ### Architecture Decision Records
+  
++ #### ADR1 Implementing a game tutorial
++ #### STATUS
+  Accepted
++ #### CONTEXT
+New players need to familiarize themselves with the game mechanics and controls.
++ #### DECISION
+We implemented a comprehensive game walk-through that explains the game mechanics, controls, and objectives before every new game. The tutorial is also designed to be interactive and allows players to actively engage with the game’s features.
++ #### CONSEQUENCES
+The game is more accessible to new users and player engagement is boosted.
+
+
++ #### ADR2 Implementing unit tests, build tests, and user tests
++ #### STATUS
+Accepted
++ #### CONTEXT
+We need to make sure that all the code changes work as expected.
++ #### DECISION
+We implemented Unit tests, Build tests, and User tests to make sure our code was properly implemented.
+Unit tests were run before pushing code to the development branch, on every commit the project was built to ensure no changes had broken the build and user tests were done every 2 weeks.
++ #### CONSEQUENCES
+The code is more reliable and bugs and issues were detected and fixed.
+
+
++ #### ADR3 Setting up encryption for saved files
++ #### STATUS
+Accepted
++ #### CONTEXT
+Players shouldn’t be able to modify save files to gain an unfair advantage by modifying data.
++ #### DECISION
+The files will be encrypted with an AES 128-bit encryption key and a 16-byte initialization vector which is then encoded into a Base64 string for easy file storage in order to protect user data.
++ #### CONSEQUENCES
+The security of the system is enhanced and save files are protected against unauthorized users who can’t alter their data to their advantage.
+
 
 ## QA
 
-During the development process, our team dedicated significant attention to the QA stages, using various types of testing. Since it was a game project, the testing was exclusively manual but conducted with a high degree of rigor.
+During the development process, our team dedicated significant attention to the QA stages, using various types of testing.
 
 ---
 
